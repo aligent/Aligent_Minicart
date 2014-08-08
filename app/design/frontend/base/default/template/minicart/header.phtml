@@ -1,0 +1,85 @@
+<?php if (!$this->getRequest()->isXmlHttpRequest()): ?>
+    <?php if ($this->getIsNeedToDisplaySideBar()):?>
+        <a href="<?php echo $this->helper('checkout/cart')->getCartUrl() ?>" class="top-link-cart">
+            <!-- TODO: Replace with cookie value -->
+            <i class="cart">0</i>
+            <div class="maintext">Your Cart <i></i></div>
+        </a>
+
+        <div class="minicart" style="display:none">
+            <div class="minicart-container" id="minicart-container">
+                <p class="center">Loading...</p>
+            </div>
+        </div>
+        <script>
+            var miniCartIsLoaded = false;
+            Event.observe(document, 'personalisationcookie:render', 
+                function() {
+                    miniCartIsLoaded = false;
+                }
+            );
+            Event.observe(document, 'dom:loaded', 
+                function() {
+                    // $$("li a.top-link-cart").each(
+                    $$("li.mini-cart").each(
+                        function(el) {
+                            el.observe('mouseenter', 
+                                function(event) {
+                                    $('minicart-container').up(0).show();
+                                    if (!miniCartIsLoaded) {
+                                        // $('minicart-container').update('<div style="text-align: center;"><img class="minicart-loading" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" /></div>');
+                                        var cartUrl = '<?php echo Mage::helper('minicart/cart')->getCartUrl() ?>' + '?cachebuster=' + new Date().valueOf();
+                                        new Ajax.Request(cartUrl,{
+                                            method: 'get',
+                                            onSuccess: function(resp) {
+                                                var minicart = '';
+                                                if (typeof(resp.responseText) == 'string') {
+                                                    minicart = resp.responseText.evalJSON().minicart;
+                                                }
+                                                if (minicart != '') {
+                                                    $('minicart-container').update(minicart);
+                                                    miniCartIsLoaded = true;
+                                                    Event.fire(document, 'minicart:loaded');
+                                                } else {
+                                                    alert('An error has occurred. Please try again');
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            );
+                            el.observe('mouseleave',
+                                function(event){
+                                    $('minicart-container').up(0).hide();
+                                }
+                            );
+                        }
+                    );
+                    
+                }
+            );
+        </script>
+    <?php endif; ?>
+<?php else: ?>
+    <?php 
+    $count = $this->getSummaryCount();
+    $_items = $this->getRecentItems($count);
+    if(count($_items)): ?>
+        <ul>
+            <?php 
+                foreach($_items as $_item) {
+                    if(isset($currentUrl)) {
+                        $_item->setData('currentUrl', $currentUrl);
+                    }
+
+                    echo $this->getItemHtml($_item);
+                }
+            ?>
+        </ul>
+        <div class="minicart-checkout">
+            <a href="<?php echo $this->getUrl('checkout/cart') ?>" class="orangelink"><?php echo $this->__('View/Edit Cart') ?></a>
+        </div>
+    <?php else: ?>
+        <p class="no-items-in-cart"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+    <?php endif ?>
+<?php endif; ?>
