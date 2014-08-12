@@ -1,0 +1,26 @@
+<?php
+$_items = $this->getItems();
+$helper = Mage::helper('checkout');
+?>
+<?php if($iSize = count($_items)): ?>
+    <ul class="chosen-products">
+        <?php $iCount = 0;  ?>
+        <?php foreach ($_items as $_item): ?>
+            <li class="<?php echo (($iCount++ % 2) == 0)?'zebra':'' ?>">
+                <?php echo $this->getItemHtml($_item) // checkout/cart/sidebar/default.phtml as defined in minicart.xml  ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="total-qty"> <?php echo $iSize; ?> <?php echo ($iSize > 1) ? $this->__('items in bag') : $this->__('item in bag'); ?></div>
+    <div class="dropdown-cart-subtotal">
+        <span class="dropdown-cart-subtotal-counted"><?php echo $this->__('Total:')?> <span class="subtotal-counted-sum"><?php echo $helper->formatPrice($this->getSubtotal()) ?></span></span>
+    </div>
+<?php else: ?>
+    <div class="no-items-in-cart"><?php echo Mage::helper('minicart')->getEmptyCartMessage();?></div>
+<?php endif ?>
+<div class="action">
+    <a href="<?php echo $this->getUrl('checkout/cart');?>" class="dropdown-view-cart button"><?php echo $this->__('Go to bag');?></a>
+</div>
+<div class="promotional">
+    <?php echo Mage::helper('minicart')->getPromotionalMessage(); ?>
+</div>

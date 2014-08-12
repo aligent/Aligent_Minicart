@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <aligent_custom translate="label">
+            <label>Aligent</label>
+            <sort_order>110</sort_order>
+        </aligent_custom>
+    </tabs>
+    <sections>
+        <aligent_frontend translate="label">
+            <class>separator-top</class>
+            <label>Aligent Frontend Features</label>
+            <tab>aligent_custom</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <mini_cart translate="label comment">
+                    <label>Drop-down Minicart setting</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>100</sort_order>
+                    <fields>
+                        <promotional_block translate="label comment">
+                            <label>Static Block for custom promotional text</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[ Show this block in the mini-cart drop-down]]></comment>
+                        </promotional_block>
+                        <empty_cart_block translate="label comment">
+                            <label>Static Block for empty-cart</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[ Show this block when there's no item in cart ]]></comment>
+                        </empty_cart_block>
+                    </fields>
+                </mini_cart>
+            </groups>
+        </aligent_frontend>
+    </sections>
+</config>
