@@ -29,9 +29,9 @@ Any contribution is highly appreciated. The best way to contribute code is to op
 
 Developer
 ---------
-Jim O'Halloran <jim@aligent.com.au>
-Jonathan Day <jonathan@aligent.com.au>
-William Tran <william@aligent.com.au>
+- Jim O'Halloran <jim@aligent.com.au>
+- Jonathan Day <jonathan@aligent.com.au>
+- William Tran <william@aligent.com.au>
 
 Licence
 -------
