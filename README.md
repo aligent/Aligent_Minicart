@@ -30,6 +30,8 @@ Any contribution is highly appreciated. The best way to contribute code is to op
 Developer
 ---------
 Jim O'Halloran <jim@aligent.com.au>
+Jonathan Day <jonathan@aligent.com.au>
+William Tran <william@aligent.com.au>
 
 Licence
 -------
@@ -37,4 +39,4 @@ Licence
 
 Copyright
 ---------
-(c) 2014 Aligent Consulting
+(c) 2012-2014 Aligent Consulting
