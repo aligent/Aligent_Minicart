@@ -11,7 +11,7 @@ class Aligent_Minicart_Helper_Data extends Mage_Core_Helper_Abstract {
             return $this->getLayout()->createBlock('cms/block')->setBlockId($vBlockId)->toHtml();
         }
         // return default text
-        return "You have no items in your shopping cart.";
+        return $this->__("You have no items in your shopping cart.");
     }
 
     public function getPromotionalMessage() {

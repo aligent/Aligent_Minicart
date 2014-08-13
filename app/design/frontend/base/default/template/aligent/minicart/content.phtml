@@ -11,7 +11,7 @@ $helper = Mage::helper('checkout');
             </li>
         <?php endforeach; ?>
     </ul>
-    <div class="total-qty"> <?php echo $iSize; ?> <?php echo ($iSize > 1) ? $this->__('items in bag') : $this->__('item in bag'); ?></div>
+    <div class="total-qty"> <?php echo $iSize; ?> <?php echo ($iSize > 1) ? $this->__('items in cart') : $this->__('item in cart'); ?></div>
     <div class="dropdown-cart-subtotal">
         <span class="dropdown-cart-subtotal-counted"><?php echo $this->__('Total:')?> <span class="subtotal-counted-sum"><?php echo $helper->formatPrice($this->getSubtotal()) ?></span></span>
     </div>
@@ -19,7 +19,7 @@ $helper = Mage::helper('checkout');
     <div class="no-items-in-cart"><?php echo Mage::helper('minicart')->getEmptyCartMessage();?></div>
 <?php endif ?>
 <div class="action">
-    <a href="<?php echo $this->getUrl('checkout/cart');?>" class="dropdown-view-cart button"><?php echo $this->__('Go to bag');?></a>
+    <a href="<?php echo $this->getUrl('checkout/cart');?>" class="dropdown-view-cart button"><?php echo $this->__('Go to cart');?></a>
 </div>
 <div class="promotional">
     <?php echo Mage::helper('minicart')->getPromotionalMessage(); ?>
