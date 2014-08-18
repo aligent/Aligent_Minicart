@@ -48,7 +48,7 @@
         <events>
             <controller_action_predispatch_checkout_cart_index>
                 <observers>
-                    <custom_ajax_cart>  
+                    <custom_ajax_cart>
                         <class>minicart/observer</class>
                         <method>renderAjaxCart</method>
                     </custom_ajax_cart>
@@ -56,4 +56,25 @@
             </controller_action_predispatch_checkout_cart_index>
         </events>
     </frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <aligent_frontend>
+                                            <title>Aligent Custom</title>
+                                        </aligent_frontend>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
 </config>

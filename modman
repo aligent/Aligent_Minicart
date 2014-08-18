@@ -1,4 +1,5 @@
 app/code/community/Aligent/Minicart app/code/community/Aligent/Minicart
 app/design/frontend/base/default/layout/aligent/minicart.xml app/design/frontend/base/default/layout/aligent/minicart.xml
+app/design/frontend/base/default/template/aligent/minicart/content.phtml app/design/frontend/base/default/template/aligent/minicart/content.phtml
 app/design/frontend/base/default/template/aligent/minicart/header.phtml app/design/frontend/base/default/template/aligent/minicart/header.phtml
 app/etc/modules/Aligent_Minicart.xml app/etc/modules/Aligent_Minicart.xml
