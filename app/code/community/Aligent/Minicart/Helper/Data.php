@@ -8,7 +8,7 @@ class Aligent_Minicart_Helper_Data extends Mage_Core_Helper_Abstract {
     public function getEmptyCartMessage() {
         $vBlockId = Mage::getStoreConfig(self::EMPTY_CART_BLOCK_CONFIG);
         if ($vBlockId) {
-            return $this->getLayout()->createBlock('cms/block')->setBlockId($vBlockId)->toHtml();
+            return Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($vBlockId)->toHtml();
         }
         // return default text
         return $this->__("You have no items in your shopping cart.");
