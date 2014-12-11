@@ -29,10 +29,7 @@
                                         new Ajax.Request(cartUrl,{
                                             method: 'get',
                                             onSuccess: function(resp) {
-                                                var minicart = '';
-                                                if (typeof(resp.responseText) == 'string') {
-                                                    minicart = resp.responseText.evalJSON().minicart;
-                                                }
+                                                var minicart = resp.responseJSON;
                                                 if (minicart != '') {
                                                     $('top_cart_content').update(minicart);
                                                     miniCartIsLoaded = true;

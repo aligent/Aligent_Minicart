@@ -23,6 +23,7 @@ class Aligent_Minicart_Model_Observer extends Mage_Core_Model_Abstract
             $vHtml = Mage::app()->getLayout()->getBlock('minicart')->assign('currentUrl', $vCurrentUrl)->toHtml();
             $vJsonData = Zend_Json::encode(array('minicart' => $vHtml));
             Mage::app()->getResponse()->setBody($vJsonData);
+            Mage::app()->getResponse()->setHeader('Content-type', 'application/json');
             $vActionName = $oRequest->getActionName();
             Mage::app()->getFrontController()->getAction()->setFlag($vActionName, Mage_Core_Controller_Varien_Action::FLAG_NO_DISPATCH, true);
         }
