@@ -1,9 +1,17 @@
+<?php
+    //Allow translations to add something custom before items in bag
+    $vBagPrefix = $this->__('BAG_PREFIX');
+    //does not have any custom translation
+    if ($vBagPrefix == 'BAG_PREFIX') {
+        $vBagPrefix = '';
+    }
+?>
 <?php if (!$this->getRequest()->isXmlHttpRequest()): ?>
     <?php if ($this->getIsNeedToDisplaySideBar()):
         $helper   = Mage::helper('checkout'); ?>
         <div class="hdr-cart">
             <div class="hdr-cart-dropdown-box">
-                <div class="hdr-cart-dropdown-chosen"><span id="top_cart_qty">0</span> <?php echo $this->__('item(s) in bag') ?></div>
+                <div class="hdr-cart-dropdown-chosen"><?php echo $vBagPrefix; ?><span id="top_cart_qty">0</span> <?php echo $this->__('item(s) in bag') ?></div>
                 <div id="top_cart_content" class="hdr-cart-dropdown" style="display: none;">
                     Loading...
                 </div>
@@ -30,8 +38,8 @@
                                             method: 'get',
                                             onSuccess: function(resp) {
                                                 var minicart = resp.responseJSON;
-                                                if (minicart != '') {
-                                                    $('top_cart_content').update(minicart);
+                                                if (minicart && minicart.minicart) {
+                                                    $('top_cart_content').update(minicart.minicart);
                                                     miniCartIsLoaded = true;
                                                     Event.fire(document, 'minicart:loaded');
                                                 } else {
