@@ -1,6 +1,8 @@
 <?php
 $_items = $this->getItems();
 $helper = Mage::helper('checkout');
+/** @var Mage_Checkout_Block_Cart_Totals $oCartTotalBlock */
+$oCartTotalBlock =  Mage::getBlockSingleton('checkout/cart_totals');
 ?>
 <?php if($iSize = count($_items)): ?>
     <ul class="chosen-products">
@@ -12,9 +14,11 @@ $helper = Mage::helper('checkout');
         <?php endforeach; ?>
     </ul>
     <div class="total-qty"> <?php echo $iSize; ?> <?php echo ($iSize > 1) ? $this->__('items in cart') : $this->__('item in cart'); ?></div>
-    <div class="dropdown-cart-subtotal">
-        <span class="dropdown-cart-subtotal-counted"><?php echo $this->__('Total:')?> <span class="subtotal-counted-sum"><?php echo $helper->formatPrice($this->getSubtotal()) ?></span></span>
-    </div>
+    <div class="dropdown-cart-subtotal"><?php
+        echo $oCartTotalBlock->renderTotals();
+        //footer so it displays grand total
+        echo $oCartTotalBlock->renderTotals('footer');
+        ?></div>
 <?php else: ?>
     <div class="no-items-in-cart"><?php echo Mage::helper('minicart')->getEmptyCartMessage();?></div>
 <?php endif ?>
